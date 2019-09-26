@@ -1,3 +1,4 @@
+# Stage 1
 FROM node:alpine AS builder
 
 # install chrome for protractor tests
@@ -12,6 +13,8 @@ WORKDIR /app
 COPY . .
 RUN npm install && \
     npm run build
-    
+
+#Stage 2
 FROM nginx:alpine
 COPY --from=builder /app/dist/* /usr/share/nginx/html/
+EXPOSE 80
