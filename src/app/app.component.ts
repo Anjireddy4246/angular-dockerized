@@ -6,12 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent implements OnInit {
-  title = 'angular-dockerized';
+  title = 'angular-fireball';
   ngOnInit(): void {
-    if (this.title == 'angular-dockerized') {
+    if (this.title == 'angular-fireball') {
       console.log('Angular App is up and running');
     }
   }
-
-
 }
