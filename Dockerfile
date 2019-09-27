@@ -10,6 +10,14 @@ FROM node:alpine AS builder
 #apk add --update --no-cache gifsicle ttf-freefont optipng libjpeg-turbo-utils udev chromium
 #export CHROME_BIN=/usr/bin/chromium-browser
 WORKDIR /app
+
+# add `/app/node_modules/.bin` to $PATH
+ENV PATH /app/node_modules/.bin:$PATH
+
+COPY package.json /app/package.json
+RUN npm install
+RUN npm install -g @angular/cli@7.3.9
+
 COPY . .
 RUN npm install && \
     npm run build
