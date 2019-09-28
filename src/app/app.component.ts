@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'angular-fireball';
-  subTitle = 'awesome angular 8.0';
+  subTitle = 'awesome angular 8.1.1';
   ngOnInit(): void {
     if (this.title == 'angular-fireball') {
       console.log('Angular App is up and running');
