@@ -1,5 +1,5 @@
 # Stage 1
-FROM node:alpine AS builder
+###FROM node:alpine AS builder
 
 # install chrome for protractor tests
 # Install Google Chrome
@@ -9,22 +9,29 @@ FROM node:alpine AS builder
 
 #apk add --update --no-cache gifsicle ttf-freefont optipng libjpeg-turbo-utils udev chromium
 #export CHROME_BIN=/usr/bin/chromium-browser
-WORKDIR /app
+###WORKDIR /app
 
 # add `/app/node_modules/.bin` to $PATH
 #ENV PATH /app/node_modules/.bin:$PATH
-RUN PATH="/app/node_modules/.bin:$PATH"
-RUN export PATH
-COPY package.json /app/package.json
-RUN npm install
-RUN npm install -g @angular/cli@7.3.9
+###RUN PATH="/app/node_modules/.bin:$PATH"
+###RUN export PATH
+###COPY package.json /app/package.json
+###RUN npm install
+###RUN npm install -g @angular/cli@7.3.9
 
-COPY . .
-RUN npm install && \
-    npm run build
+###COPY . .
+###RUN npm install && \
+###    npm run build
 
 #Stage 2
 FROM nginx:alpine
+
+WORKDIR /app
+
+
+ENV PATH /app/node_modules/.bin:$PATH
+RUN export PATH
+
 
 ## Copy our default nginx config
 COPY nginx/default.conf /etc/nginx/conf.d/
@@ -34,8 +41,8 @@ RUN rm -rf /usr/share/nginx/html/*
 ## From ‘builder’ stage copy over the artifacts in dist folder to default nginx public folder
 #RUN cp -rvpf /app/dist/* /usr/share/nginx/html/
 #COPY --from=builder  ./app/dist/ /usr/share/nginx/html/
-COPY --from=builder /app/dist /usr/share/nginx/html
-#ADD app/dist/ /usr/share/nginx/html/
+COPY /app/dist/* /usr/share/nginx/html/
+#ADD app/dist /usr/share/nginx/html
 # EXPOSE 80
 
 #Run NGINX
