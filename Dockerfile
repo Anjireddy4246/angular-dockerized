@@ -14,7 +14,7 @@ WORKDIR /app
 # add `/app/node_modules/.bin` to $PATH
 #ENV PATH /app/node_modules/.bin:$PATH
 RUN PATH="/app/node_modules/.bin:$PATH"
-RUN EXPORT PATH
+RUN export PATH
 COPY package.json /app/package.json
 RUN npm install
 RUN npm install -g @angular/cli@7.3.9
