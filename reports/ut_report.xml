@@ -1,0 +1,7 @@
+<testExecutions version="1">
+  <file path="AppComponent">
+    <testCase name="AppComponent should render title in a h1 tag" duration="105"/>
+    <testCase name="AppComponent should have as title 'angular-fireball'" duration="33"/>
+    <testCase name="AppComponent should create the app" duration="24"/>
+  </file>
+</testExecutions>
