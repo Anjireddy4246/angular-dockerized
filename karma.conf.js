@@ -31,8 +31,8 @@ module.exports = function (config) {
     autoWatch: true,
     browsers: ['ChromeHeadless'],
     sonarQubeUnitReporter: {
-      sonarQubeVersion: 'LATEST',
-      outputFile: 'reports/ut_report.xml',
+      sonarQubeVersion: '7.9.1',
+      outputFile: './coverage/test_report.xml',
       useBrowserName: false
     },
     customLaunchers: {
